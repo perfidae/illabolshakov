@@ -1,0 +1,208 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #8e2b2b, #c74b4b);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Шапка сайту */
+header {
+    background-color: #7a1f1f;
+    padding: 16px 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 18px;
+}
+
+.header-nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.header-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px;
+    background: #ff4d4d;
+    transition: width 0.3s ease;
+}
+
+.header-nav a:hover::after {
+    width: 100%;
+}
+
+.header-nav a:hover {
+    transform: translateY(-1px);
+}
+
+/* Основний контент */
+main {
+    max-width: 1000px;
+    width: 100%;
+    margin: 40px auto 80px;
+    padding: 30px 20px 40px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    animation: fadeIn 0.6s ease;
+}
+
+/* Заголовки */
+h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+/* Текст */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Виділення пошти */
+.highlight {
+    background-color: #ff4d4d;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.highlight:hover {
+    background-color: #ffffff;
+    color: #8e2b2b;
+    cursor: pointer;
+    transform: scale(1.05) translateY(-1px);
+}
+
+/* Карта */
+#map {
+    height: 500px;
+    border-radius: 15px;
+    margin: 30px auto;
+    max-width: 900px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    overflow: hidden;
+}
+
+/* Підпис під картою */
+.map-info {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.map-legend {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 14px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.25);
+    padding: 8px 14px;
+    border-radius: 12px;
+}
+
+.legend-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+}
+
+.legend-np {
+    background: #ff4d4d;
+}
+
+.legend-up {
+    background: #ffd966;
+}
+
+/* Футер */
+footer {
+    background-color: #7a1f1f;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+/* Анімації */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    main {
+        margin: 30px 10px 70px;
+        padding: 24px 14px 32px;
+    }
+
+    .header-inner {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .header-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
