@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Магазин Містері Боксів – Доставка</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+    <!-- Твої стилі -->
+    <link rel="stylesheet" href="where.css">
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="header-logo">Магазин Містері Боксів</div>
+            <nav class="header-nav">
+                <a href="index.html">Каталог</a>
+                <a href="#map">Карта</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h2>Де нас знайти?</h2>
+        <p>Якими поштовими службами можна замовити?</p>
+        <p>Можна замовити <span class="highlight">Новою поштою</span> або <span class="highlight">Укрпоштою</span></p>
+
+        <div class="map-info">Місця видачі товару в Україні</div>
+
+        <div id="map"></div>
+
+        <div class="map-legend">
+            <div class="legend-item">
+                <span class="legend-color legend-np"></span>
+                <span>Відділення Нової Пошти</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color legend-up"></span>
+                <span>Відділення Укрпошти</span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Магазин Містері Боксів
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Ініціалізація карти
+        var map = L.map('map', {
+            scrollWheelZoom: false
+        }).setView([49.0, 31.0], 6); // центр України
+
+        // Підкладка карти
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap',
+            maxZoom: 18,
+        }).addTo(map);
+
+        // Кастомні іконки (для прикладу різні для НП та УП)
+        var npIcon = L.icon({
+            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [0, -30]
+        });
+
+        var upIcon = L.icon({
+            iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [0, -30]
+        });
+
+        // Маркери – приклад міст
+        var locations = [
+            {name: "Київ – Нова Пошта", coords: [50.4501, 30.5234], type: "np"},
+            {name: "Львів – Нова Пошта", coords: [49.8397, 24.0297], type: "np"},
+            {name: "Одеса – Нова Пошта", coords: [46.4825, 30.7233], type: "np"},
+            {name: "Харків – Укрпошта", coords: [50.0047, 36.2314], type: "up"},
+            {name: "Дніпро – Укрпошта", coords: [48.4647, 35.0462], type: "up"}
+        ];
+
+        locations.forEach(function(loc){
+            L.marker(loc.coords, { icon: loc.type === "np" ? npIcon : upIcon })
+                .addTo(map)
+                .bindPopup(loc.name);
+        });
+    </script>
+</body>
+</html>
 
